@@ -9,6 +9,8 @@ const {
 } = require("../utils/error");
 var AWS = require("aws-sdk");
 
+const Post = require("../model/post.model");
+
 class GroupService {
   constructor() {}
 
