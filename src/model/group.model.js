@@ -7,14 +7,21 @@ const group = dynamoose.model(
       id: {
         type: String,
         required: true,
-        hashKey: true,
+        rangeKey: true,
         default: () => {
           return uuid.v4();
+        },
+        index: {
+          local: true,
         },
       },
       name: String,
       admin: {
-        type: Array,
+        type: String,
+        hashKey: true,
+        index: {
+          global: true,
+        },
       },
       isAppInstalled: {
         type: Boolean,

@@ -22,11 +22,11 @@ module.exports.groupCreate = async (req, res) => {
 
 module.exports.groupList = async (req, res) => {
   try {
-    let result = await new AdminService().adminList(req);
+    let result = await new GroupService().groupList(req);
     let response;
 
     // if (result?.admins?.length)
-    response = new OKSuccess("Successfully Retrive the admin", result);
+    response = new OKSuccess("Successfully Retrive the groups", result);
     //else response = new NotFoundError({ mesg: "No admin in the database" });
     res.status(response.status).send(response);
   } catch (err) {

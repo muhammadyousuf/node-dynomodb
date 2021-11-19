@@ -34,18 +34,20 @@ class GroupService {
       });
 
       var docClient = new AWS.DynamoDB.DocumentClient();
-
-      var table = "admin";
+      var table = "group";
 
       var params = {
         TableName: table,
-        IndexName: "idGlobalIndex",
-        //KeyConditionExpression: "uid = :id",
-        // ExpressionAttributeNames: {
-        //   uid: "id",
-        // },
+        IndexName: "adminGlobalIndex",
+        KeyConditionExpression: "#uid = :admin",
+        ExpressionAttributeNames: {
+          "#uid": "admin",
+        },
+        ExpressionAttributeValues: {
+          ":admin": "c834440f-55d3-47a7-a745-ad60f428402d",
+        },
       };
-      let dataItem = await docClient.scan(params).promise();
+      let dataItem = await docClient.query(params).promise();
       //    let dba = await docClient.scan(params, async function (err, data) {
       //         if (err) {
       //           console.error(
