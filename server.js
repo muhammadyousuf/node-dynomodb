@@ -26,8 +26,9 @@ app.use(function (req, res, next) {
 app.use(cors());
 app.use("/api/v1/admin", routes.ADMIN);
 app.use("/api/v1/group", routes.GROUP);
+app.use("/api/v1/server", routes.SERVER);
 
 
 app.listen(process.env.PORT, () => {
-  console.log(`shangrila server is running on port ${process.env.PORT}`);
+  console.log(`server is running on port ${process.env.PORT}`);
 });
